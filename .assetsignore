@@ -1,0 +1,7 @@
+functions
+worker.js
+wrangler.toml
+README.md
+_redirects
+.git
+.assetsignore

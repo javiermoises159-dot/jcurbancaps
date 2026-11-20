@@ -10,7 +10,7 @@ export async function onRequestGet({ request, env, next }) {
   const html = await res.text();
   const origin = new URL(request.url).origin;
   const out = html.replace(/(<script type="application\/json" id="store-data">)[\s\S]*?(<\/script>)/, (_, a, b) => a + safe + b)
-    .split("https://hercellstore.pages.dev").join(origin);
+    .split("https://jcurbancaps.pages.dev").join(origin);
   const h = new Headers(res.headers); h.set("Cache-Control", "no-store"); h.delete("Content-Length");
   return new Response(out, { status: res.status, headers: h });
 }
