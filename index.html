@@ -828,7 +828,7 @@ const TX = {
   tShop:'Catalogo',tInfo:'Negozio',hours:'San Donato Milanese · Aperto 24 ore',about:"JC URBAN CAPS: il tuo negozio online di cappellini. Eleviamo il tuo stile urbano con design unici e qualità premium. Trova il cappellino perfetto per il tuo look di ogni giorno. Spedizione veloce e sicura! #jcurbancaps",guideBtn:'Guida alle taglie',
   msgHi:'Ciao JC Urban Caps! Vorrei ordinare:',msgOne:'Ciao JC Urban Caps! Vorrei ordinare:',msgDel:'Consegna',msgName:'Nome',msgCombo:'Combo Imprenditore applicato',
   cats:{snapback:'Snapback',curve:'Visiera curva',fitted:'Fitted 59FIFTY',scarpe:'Sneakers',borse:'Borse'},catsLow:{snapback:'snapback',curve:'a visiera curva',fitted:'fitted',scarpe:'sneakers',borse:'borse'},
-  descs:{snapback:'Visiera piatta e chiusura snapback regolabile: taglia unica.',curve:'Visiera curva, stile classico da tutti i giorni. Taglia unica regolabile.',fitted:'Modello chiuso (fitted), vestibilità classica.',scarpe:'Con scatola. Indica la tua taglia e ti confermiamo la disponibilità.',borse:'Con tracolla. Chiedici altre foto su WhatsApp.'},
+  descs:{snapback:'Visiera piatta e chiusura snapback regolabile.',curve:'Visiera curva, stile classico da tutti i giorni. Chiusura regolabile.',fitted:'Modello chiuso (fitted), vestibilità classica.',scarpe:'Con scatola. Indica la tua taglia e ti confermiamo la disponibilità.',borse:'Con tracolla. Chiedici altre foto su WhatsApp.'},
   wHi:'Benvenuto da JC Urban Caps',wTitle:'Come scelgo la mia taglia?',wP:'Misura la testa nel punto più largo e confronta i centimetri con la tabella.',wGo:'Entra nel negozio',
   gSteps:['Misura la testa con un metro da sarta. Va bene anche un nastro o un filo, da misurare poi con un righello.','Cerca il punto più largo della testa e misura la circonferenza, dove vorresti che poggi il cappello.','Confronta i centimetri con la tabella delle taglie.'],
   gTh:['Circonferenza','Taglia'],gOne:'I modelli snapback e a visiera curva sono regolabili: taglia unica.',gWarn:'Possono esserci differenze minime tra modelli, e anche tra cappelli della stessa taglia: la maggior parte è assemblata a mano.'},
@@ -845,7 +845,7 @@ const TX = {
   tShop:'Catálogo',tInfo:'Tienda',hours:'San Donato Milanese · Abierta 24 horas',about:"JC URBAN CAPS: tu tienda online de gorras. Elevamos tu estilo urbano con diseños únicos y calidad premium. Encuentra la gorra perfecta para tu look diario. ¡Envío rápido y seguro! #jcurbancaps",guideBtn:'Guía de tallas',
   msgHi:'¡Hola JC Urban Caps! Quiero pedir:',msgDel:'Entrega',msgName:'Nombre',msgCombo:'Combo Emprendedor aplicado',
   cats:{snapback:'Snapback',curve:'Visera curva',fitted:'Fitted 59FIFTY',scarpe:'Sneakers',borse:'Bolsos'},catsLow:{snapback:'snapback',curve:'de visera curva',fitted:'fitted',scarpe:'sneakers',borse:'bolsos'},
-  descs:{snapback:'Visera plana y cierre snapback ajustable: talla única.',curve:'Visera curva, estilo clásico para todos los días. Talla única ajustable.',fitted:'Modelo cerrado (fitted), ajuste clásico.',scarpe:'Con caja. Indica tu talla y te confirmamos la disponibilidad.',borse:'Con correa. Pídenos más fotos por WhatsApp.'},
+  descs:{snapback:'Visera plana y cierre snapback ajustable.',curve:'Visera curva, estilo clásico para todos los días. Cierre ajustable.',fitted:'Modelo cerrado (fitted), ajuste clásico.',scarpe:'Con caja. Indica tu talla y te confirmamos la disponibilidad.',borse:'Con correa. Pídenos más fotos por WhatsApp.'},
   wHi:'Bienvenido a JC Urban Caps',wTitle:'¿Cómo saber mi talla?',wP:'Mide tu cabeza en el punto más ancho y compara los centímetros con la tabla.',wGo:'Entrar a la tienda',
   gSteps:['Mide tu cabeza con una cinta métrica. También puedes usar un listón o un hilo y medirlo luego con una regla.','Busca el punto más ancho de tu cabeza y mide la circunferencia, donde te gustaría que quede la gorra.','Compara los centímetros con la tabla de tallas.'],
   gTh:['Circunferencia','Talla'],gOne:'Los modelos snapback y de visera curva son ajustables: talla única.',gWarn:'Puede haber diferencias mínimas entre modelos, e incluso entre gorras de la misma talla: la mayoría se ensamblan a mano.'}
@@ -1177,7 +1177,7 @@ function aPedit(){
   <div class="a2"><label class="afl"><span>Categoría</span><select id="eCat">${catOpts(e.cat)}</select></label>${fl('eBrand','Marca',e.brand,'type="text" maxlength="30" list="aBrands"')}</div>
   <datalist id="aBrands">${brands.map(b=>`<option value="${esc(b)}"></option>`).join('')}</datalist>
   ${fl('eTags','Equipo y liga (separados por comas)',(e.tags||[]).join(', '),'type="text" maxlength="120" placeholder="Ej. Lakers, NBA"')}
-  ${fl('eSizes','Tallas (separadas por comas)',e.sizes.join(', '),'type="text" placeholder="Vacío = talla única · 7 1/4, 7 1/2 · 41, 42"')}
+  <input type="hidden" id="eSizes" value="">
   ${e.sizes.length?`<div class="asec"><b>Cantidad por talla</b><small>Vacío = sin control</small></div><div class="astk">${e.sizes.map((z,i)=>`<label><span>${esc(z)}</span><input id="stk${i}" type="number" min="0" step="1" inputmode="numeric" value="${e.stock[z]!=null?e.stock[z]:''}" placeholder="–"></label>`).join('')}</div><p class="anote">Cuando una talla llega a 0 aparece agotada. Si todas están en 0, el producto sale agotado.</p>`:fl('stk_','Cantidad disponible (opcional)',e.stock._!=null?e.stock._:'','type="number" min="0" step="1" inputmode="numeric" placeholder="Vacío = sin control"')}
   ${ta('eDesc','Descripción (opcional)',e.desc,'Si la dejas vacía se usa el texto de la categoría.')}
   <div class="aswr"><b>Mostrar en la tienda</b>${swB(!e.hidden,'eHid')}</div>
@@ -1226,7 +1226,7 @@ function aPromos(){
   const ty={pct:'% descuento',fixed:'Precio fijo',coupon:'Cupón'};
   return hd('Promociones','home')+`<button type="button" class="abtn dk" data-a="newPromo">+ Nueva promoción</button>
   <div class="aprods">
-  <button type="button" class="apromo" data-av="combo"><span class="pi">${ic('tag',22)}</span><span class="cinf"><b>${esc(TX.es.comboT)}</b><small>${S.combo.min}+ ${esc(catEs(S.combo.cat))} a ${fmt(S.combo.price)} c/u</small><em class="st on">Activa</em></span>${CHV}</button>
+  <button type="button" class="apromo" data-av="combo"><span class="pi">${ic('tag',22)}</span><span class="cinf"><b>${esc(TX.es.comboT)}</b><small>${S.combo.cat==='__none'?'Precio especial por cantidad · tócalo para activarlo':S.combo.min+'+ '+esc(catEs(S.combo.cat))+' a '+fmt(S.combo.price)+' c/u'}</small><em class="st ${S.combo.cat==='__none'?'off':'on'}">${S.combo.cat==='__none'?'Apagado':'Activa'}</em></span>${CHV}</button>
   ${ps.map(p=>{const s=st[promoState(p)];return `<button type="button" class="apromo" data-a="pedit2" data-id="${esc(p.id)}"><span class="pi">${ic(p.type==='coupon'?'tag':'pct',22)}</span><span class="cinf"><b>${esc(p.name)}</b><small>${ty[p.type]||''}${p.type==='coupon'?' · '+esc(p.code||''):''} · ${p.type==='fixed'?fmt(p.value):'−'+p.value+'%'}${p.to?' · hasta '+esc(p.to.split('-').reverse().join('/')):''}${p.clock?' · con reloj':''}</small><em class="st ${s[1]}">${s[0]}</em></span>${CHV}</button>`;}).join('')}</div>`;
 }
 function aPromo(){
