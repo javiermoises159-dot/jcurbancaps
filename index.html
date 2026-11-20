@@ -1067,7 +1067,7 @@ const uid=p=>p+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 /* ======================= v17: datos dinámicos ======================= */
 const CATDEF={snapback:{it:'Snapback',es:'Snapback'},curve:{it:'Visiera curva',es:'Visera curva'},fitted:{it:'Fitted 59FIFTY',es:'Fitted 59FIFTY'},scarpe:{it:'Sneakers',es:'Sneakers'},borse:{it:'Borse',es:'Bolsos'}};
 const TILEDEF=['fitted','curve','snapback','scarpe'];
-const DEF={hero:"fotos/hero.jpg",w1:"fotos/w1.jpg",owner:OWNER,w_shop:"fotos/hero.jpg",w_combo:"fotos/hero.jpg",w_guide:"fotos/hero.jpg",w_wa:"fotos/hero.jpg",guide:"fotos/hero.jpg"};
+const DEF={hero:"fotos/hero.jpg",w1:"fotos/w1.jpg",owner:OWNER,w_shop:"fotos/w_shop.jpg",w_combo:"fotos/w_combo.jpg",w_guide:"fotos/hero.jpg",w_wa:"fotos/w_wa.jpg",guide:"fotos/hero.jpg"};
 Object.assign(S,{oc:Math.random().toString(36).slice(2,6).toUpperCase(),tag:'',notify:{},stats:null,stDays:7,orders:null,ordF:'new',salesM:'',cats:{},brandsH:{},promos:{},site:{},media:{},av:'home',ed:null,ce:null,pe:null,aq:'',af:'all',upFor:null,prev:false,coupon:'',arm:''});
 const str=(v,n)=>typeof v==='string'?v.slice(0,n||200):'';
 const M=k=>(S.media[k]&&okImg(S.media[k].img))||DEF[k]||'';
